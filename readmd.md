@@ -1,0 +1,42 @@
+# International Maritime Piracy
+
+Problems I found with web scraping:
+
+1) Choosing an environment:
+
+I went with a conda virtual environment because without environments, python can easily become a hodge-podge of conflicting packages and multiple versions of python on the machine. However, I was greeted with the following:
+
+    requests.exceptions.SSLError: HTTPSConnectionPool(host='msi.nga.mil', port=443): Max retries exceeded with url: /NGAPortal/msi/query_results.jsp?MSI_queryType=ASAM&MSI_generalFilterType\=All&MSI_generalFilterValue=-999&MSI_additionalFilterType1=None&MSI_additionalFilterType2=-999&MSI_additionalFilterValue1=-999&MSI_additionalFilterValue2=-999&MSI_outputOptionType1=SortBy&MSI_outputOptionType2=-999&MSI_outputOptionValue1=Date_DESC&MSI_outputOptionValue2=-999&MSI_MAP=-999 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines','tls_process_server_certificate', 'certificate verify failed')])")))
+
+My first thought was this has something to with Requests and BeautifulSoup not being able to handle SSH traffic because of outdated information about them. A little more research and I found that wasn't the case.
+
+Then I thought perhaps I was being shut down for looking like a computer, so I 
+
+
+This took some getting around and there were several steps in between. I first checked where python was and what version was running. It turned out the while python 3.7 is my system python, it wasn't for the conda environment. Once that was fixed... still no love.
+
+
+Well, it got fixed. Kinda. Kinda meaning it was fixed but I didn't record exactly what I did. 
+
+... So I got this again.
+/NGAPortal/msi/query_results.jsp?MSI_queryType%20%20%20%20=ASAM&MSI_generalFilterType=All&MSI_generalFilterValue=-999&MSI_additional%20%20%20%20FilterType1=None&MSI_additionalFilterType2=-999&MSI_additionalFilterValue1%20%20%20%20=-999&MSI_additionalFilterValue2=-999&MSI_outputOptionType1=SortBy&MSI_%20%20%20%20outputOptionType2=-999&MSI_outputOptionValue1=%20%20%20%20Date_DESC&MSI_outputOptionValue2=-999&MSI_MAP=-999 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')])"))) (scraping_the_pirates) Alexs-MacBook-Pro:Capstone Projects alex$ 
+
+Part of this is triple quoting the URL, which is huge.
+
+Virtual Environments -- I tried this in Conda. Just ... a huge problem. I try to attack it again some other day but for now, this isn't worth it
+
+-----
+Getting everything stored
+
+The data was tabular which made it and a tricky to work with because there were essentially no HTML or CSS selectors that were unique. So I did it in regex but ... well I cheated.
+
+I opened up the doc in OpenOffice which has good regex support and proceeded to do a series of find/replace moves to remove the HTML formatting. 
+
+After cleaning the data, I saved as tab-delimited as commas, semicolons, dashes were all already in use but tabs weren't.
+
+Was a huge time suck. So I went back to using regex. The problem was that I still couldn't 
+figure how to remove blank lines. so I used grep and sed
+
+````
+    sed '/^$/d' file.txt > no_empty_lines.txt
+````
