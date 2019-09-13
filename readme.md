@@ -5,7 +5,7 @@
 2. [Data](#Data)
 3. [EDA](#Exploratory_Data_Analysis)
 4. [Issues/Lessons](#Issues_&_Lessons_Learned)
-
+5. [Next Steps](#Next_Steps)
 
 ## Background_&_Motivation
 
@@ -14,7 +14,6 @@ Around 2012, the US population became aware that pirates really were, shall we s
 But, like a movie with a plot twist, this didn't turn out as I expected. I had thought I would be spend short amount of time on collecting the data since it was readily available and then use the remaining time to develop mastery of pandas and folium in order to answer a number of question about trends over time and by location.
 
 Instead what I got was practice with some old but powerful tools, regex and sed, a bit of practice with pandas and thankfully pleasant acquaintance with folium.
-
 
 ## Data
 
@@ -31,10 +30,8 @@ First a quick overview. Piracy is alive and well
 Piracy in HOA is also still alive and well
 ![Horn of Africa](images/HOA.png)
 
-
 Less well known is that piracy in South East Asia is still doing just fine, thank you.
 ![SE Asia](images/SE_Asia.png)
-
 
 And finally, piracy in the Caribbean is still a thing.
 ![Pirates of the Caribbean](images/Caribbean.png)
@@ -62,7 +59,8 @@ Eventually I found out that while python 3.7 is my system python, it wasn't for 
 
 ![Beautiful, right?](images/Beatiful_right.png)
 
-#### ... who is insane and lives off cocaine and champagne
+
+#### ... who is insane subsists mostly on cocaine and champagne
 
 ![Turtles_all_the_way_down](images/Turtles_all_the_way_down.png)
 
@@ -86,13 +84,12 @@ But found that VS Code, particularly with the Rainbow CSV extension, was a much 
 
 ![VS Code to see the gremlins](images/see_the_gremlins.png)
 
-
-
-
-but VisualStudio Code is a much better option
-
-
-
-
-
 ### 4) Dubstep -- I Never Should Have Left You
+
+# Next_Steps
+
+I'm not really done with this; the questions I had at the beginning are still there. Here is where I want to go next:
+
+- find a better solution for parsing the data
+- time series analysis and categorization of the data
+- gain fluency rather than just familiarity with folium. 
