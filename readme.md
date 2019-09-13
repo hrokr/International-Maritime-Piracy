@@ -51,11 +51,11 @@ Eventually I found out that while python 3.7 is my system python, it wasn't for 
 
 ### 3) Web Scraping Means "I Hope This Isn't Just One Giant Table"
 
-My data is like a beautiful model:
+#### My data is like a beautiful model:
 
 ![Beautiful, right?](images/Beatiful_right.png)
 
-... who is insane and lives off cocaine and champagne
+#### ... who is insane and lives off cocaine and champagne
 
 ![Turtles_all_the_way_down](images/Turtles_all_the_way_down.png)
 
@@ -68,5 +68,20 @@ Since there was no tooling that I was familiar with that could parse the tables 
 ````
     sed '/^$/d' file.txt > no_empty_lines.txt
 ````
+
+## 4) Visualization Of Data Throughout EDA Is Key
+
+Even with carefully setting aside copies of data in case something went wrong, there were a number of gremlins that popped up. Originally I used OpenOffice 
+
+
+
+
+
+
+but VisualStudio Code is a much better option
+
+
+
+
 
 ### 4) Dubstep -- I Never Should Have Left You
