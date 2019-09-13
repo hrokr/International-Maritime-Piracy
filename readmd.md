@@ -1,5 +1,15 @@
 # International Maritime Piracy
 
+
+## Background & Motivation
+
+
+## Data
+
+
+## Exploratory Data Analysis
+
+## Issues / Lesssons Learned
 Problems I found with web scraping:
 
 1) Choosing an environment:
