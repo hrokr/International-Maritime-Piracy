@@ -13,7 +13,7 @@ Instead what I got was practice with some old but powerful tools, regex and sed,
 
 The data came from the National Geospatial-Intelligence Agency (NGA)
 [Anti-shipping Activity Messages](http://bit.ly/2kA6j1N). The dataset is quite clean but is completely tabular so parsing it turned out to be a much more intensive operation than I had planned.
-
+s
 
 ## Exploratory Data Analysis
 
@@ -24,7 +24,7 @@ Piracy in HOA is also still alive and well
 ![Horn of Africa](images/HOA.png)
 
 Piracy in Nigeria?!? Yep. Oil.
-![Western Africa](images/africa.png)
+![Western Africa](images/Africa.png)
 
 Less well known is that piracy in South East Asia is still doing just fine, thank you.
 ![SE Asia](images/SE_Asia.png)
