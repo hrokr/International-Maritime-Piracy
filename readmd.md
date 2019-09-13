@@ -6,11 +6,16 @@ Around 2012, the US population became aware that pirates really were, shall we s
 
 ## Data
 The data came from the National Geospatial-Intelligence Agency (NGA)
+[Anti-shipping Activity Messages](http://bit.ly/2kA6j1N)
 
 
 
 ## Exploratory Data Analysis
+![World Piracy Events](/images/World Piracy Events.png)
 
+![Horn of Africa](/images/HOA.png)
+
+![SE Asia](/images/SE Asia.png)
 
 
 ## Issues / Lesssons Learned
@@ -33,6 +38,8 @@ Eventually I found out that while python 3.7 is my system python, it wasn't for 
 My data is like a beautiful model:
 
 
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
 
 
 
@@ -44,13 +51,10 @@ Beautiful Soup handles HTML that has unique identifiers well. But that's not tru
 
 
 ### 3) Web Scraping Is Messy
-I ended up using a combination  OpenOffice which has good regex support.
-
-After cleaning the data, I saved as tab-delimited as commas, semicolons, dashes were all already in use but tabs weren't.
-
-Was a huge time suck. So I went back to using regex. The problem was that I still couldn't 
-figure how to remove blank lines. so I used grep and sed
+Since there was no tooling that I was familiar with that could parse the tables for me, I ended up using a combination of regex and OpenOffice which has good regex support. After cleaning the data, I saved as tab-delimited as commas, semicolons, dashes were all already in use but tabs weren't. Unfortunately, regex is a perishable skill and there are a number of different flavors of it. Searches with both look-aheads and look-behinds are tricky as were for some reason getting rid of new lines. So I used sed
 
 ````
     sed '/^$/d' file.txt > no_empty_lines.txt
 ````
+
+### 4) Dubstep -- I Never Should Have Left You
