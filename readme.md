@@ -1,6 +1,13 @@
 # International Maritime Piracy
 
-## Background & Motivation
+# Table of Contents
+1. [Background](Background_&_Motivation)
+2. [Data](#Data)
+3. [EDA](#Exploratory_Data_Analysis)
+4. [Issues/Lessons](#Issues_&_Lessons_Learned)
+
+
+## Background_&_Motivation
 
 Around 2012, the US population became aware that pirates really were, shall we say, a thing and they weren't swashbuckling anti-heroes we had all hoped for. I was curious about what's happened since then.
 
@@ -15,7 +22,7 @@ The data came from the National Geospatial-Intelligence Agency (NGA)
 [Anti-shipping Activity Messages](http://bit.ly/2kA6j1N). The dataset is quite clean but is completely tabular so parsing it turned out to be a much more intensive operation than I had planned.
 
 
-## Exploratory Data Analysis
+## Exploratory_Data_Analysis
 
 First a quick overview. Piracy is alive and well
 ![World Piracy Events](images/World_Piracy_Events.png)
@@ -32,7 +39,7 @@ Less well known is that piracy in South East Asia is still doing just fine, than
 And finally, piracy in the Caribbean is still a thing.
 ![Pirates of the Caribbean](images/Caribbean.png)
 
-## Issues / Lessons Learned
+## Issues_&_Lessons_Learned
 
 ### 1) Virtual Environments for Python Basically Suck:
 
@@ -73,7 +80,11 @@ Since there was no tooling that I was familiar with that could parse the tables 
 
 Even with carefully setting aside copies of data in case something went wrong, there were a number of gremlins that popped up. Originally I used OpenOffice 
 
+![Gremlins!](images/gremlins.png)
 
+But found that VS Code, particularly with the Rainbow CSV extension, was a much better solution.
+
+![VS Code to see the gremlins](images/see_the_gremlins.png)
 
 
 
