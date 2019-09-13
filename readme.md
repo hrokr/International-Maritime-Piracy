@@ -20,9 +20,11 @@ The data came from the National Geospatial-Intelligence Agency (NGA)
 First a quick overview. Piracy is alive and well
 ![World Piracy Events](images/World_Piracy_Events.png)
 
-
 Piracy in HOA is also still alive and well
 ![Horn of Africa](images/HOA.png)
+
+Piracy in Nigeria?!? Yep. Oil.
+![Western Africa](images/africa.png)
 
 Less well known is that piracy in South East Asia is still doing just fine, thank you.
 ![SE Asia](images/SE_Asia.png)
