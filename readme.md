@@ -3,13 +3,13 @@
 
 ## Background & Motivation
 
-Around 2012, the US population became aware that pirates really were, shall we say, a thing and they weren't swashbuckling anti-heroes we had all hoped for. I was curious about what's happened since then. Specifically, I wanted to know:
+Around 2012, the US population became aware that pirates really were, shall we say, a thing -- and they weren't swashbuckling anti-heroes we had hoped for. I was curious about what's happened since then. Specifically, I wanted to know:
 
-- What is the currnet status of maritime piracy worldwide?
+- What is the current status of maritime piracy worldwide?
 - What trends, if any, can we observe?
 - How has piracy changed over time?
 
-But, like a movie with a plot twist, this didn't turn out as I expected. I had thought I would be spend short amount of time on collecting the data since it was readily available and then use the remaining time to develop mastery of pandas and folium in order to answer a number of question about trends over time and by location.
+But, like a movie with a plot twist, this didn't turn out as I expected. I had thought I would be spend short amount of time on collecting the data since it was readily available. I'd then use the remaining time to develop mastery of pandas and folium in order to answer a number of questions about trends over time and by location.
 
 Instead what I got was practice with some old but powerful tools, regex and sed, a bit of practice with pandas and thankfully pleasant acquaintance with folium.
 
