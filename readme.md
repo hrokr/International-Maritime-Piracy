@@ -18,7 +18,7 @@ Instead what I got was practice with some old but powerful tools, regex and sed,
 The data came from the National Geospatial-Intelligence Agency (NGA)
 [Anti-shipping Activity Messages](http://bit.ly/2kA6j1N). The dataset is quite clean but is completely tabular so parsing it turned out to be a much more intensive operation than I had planned.
 
-__[Update: After a period of being down, the site has been reworked.__
+__[Update: After a period of being down, the site has been reworked.]__
 __[Users now have the option of downloading a CSV file]__
 
 ## Exploratory Data Analysis
