@@ -6,3 +6,6 @@ ipython_config.py
 .DS_Store
 .AppleDouble
 .LSOverride
+
+.gitignore
+.DS_Store
