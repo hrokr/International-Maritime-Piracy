@@ -251,7 +251,46 @@ if 1 == 1:
             # write the transformed review as a line in the new file
             trigram_review = u' '.join(trigram_review)
             f.write(trigram_review + '\n')
-# print("done")
+ 
+print (u'Original:' + u'\n')
+
+for review in it.islice(line_review(review_txt_filepath), 11, 12):
+    print (review)
+
+print (u'----' + u'\n')
+print (u'Transformed:' + u'\n')
+
+with codecs.open(event_txt_filepath, encoding='utf_8') as f:
+    for review in it.islice(f, 11, 12):
+        print (review)
+
+
+    print("done")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # =========from earlier =========
 # dictionary = corpora.Dictionary(text_data)
