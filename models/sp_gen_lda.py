@@ -3,23 +3,28 @@ import codecs
 import json
 import itertools as it
 import random
+import warnings
+import pickle
 
 import pandas as pd
 
 import nltk
 from nltk.stem.wordnet import WordNetLemmatizer
-nltk.download('wordnet')
+# nltk.download('wordnet')
 from nltk.corpus import wordnet as wn
 
 import spacy
 from spacy.lang.en import English
 from spacy.lang.en.stop_words import STOP_WORDS
 
-from gensim.models import Phrases
-from gensim import corpora
-from gensim.models.word2vec import LineSentence
-
+import pyLDAvis
 import pyLDAvis.gensim
+from gensim.models import Phrases
+from gensim.models.word2vec import LineSentence
+from gensim import corpora
+from gensim.corpora import Dictionary, MmCorpus
+from gensim.models.ldamulticore import LdaMulticore
+
 
 data_directory = os.path.join('../data', 'mungedASAM.json')  
 
@@ -68,21 +73,21 @@ with codecs.open(event_txt_filepath, encoding='utf_8') as f:
     sample_review = list(it.islice(f, 8, 9))[0]
     sample_review = sample_review.replace('\\n', '\n')
         
-print (f"Showing sample {sample_review}")
+#print (f"Showing sample {sample_review}")
 
 #%%time
 parsed_review = nlp(sample_review)
 
-print("Parsing sentences")
-for num, sentence in enumerate(parsed_review.sents):
-    print ('Sentence {}:'.format(num + 1))
-    print (sentence)
-    print ('')
+#print("Parsing sentences")
+# for num, sentence in enumerate(parsed_review.sents):
+#     print ('Sentence {}:'.format(num + 1))
+#     print (sentence)
+#     print ('')
 
-print("showing parsed entites")
-for num, entity in enumerate(parsed_review.ents):
-    print ('Entity {}:'.format(num + 1), entity, '-', entity.label_)
-    print ('')
+# print("showing parsed entites")
+# for num, entity in enumerate(parsed_review.ents):
+#     print ('Entity {}:'.format(num + 1), entity, '-', entity.label_)
+#     print ('')
 
 # Tokenization
 token_text = [token.orth_ for token in parsed_review]
@@ -174,9 +179,9 @@ if 0 == 1:
 
 unigram_sentences = LineSentence(unigram_sentences_filepath)
 
-for unigram_sentence in it.islice(unigram_sentences, 230, 240):
-    print (u' '.join(unigram_sentence))
-    print (u'')
+# for unigram_sentence in it.islice(unigram_sentences, 230, 240):
+#     print (u' '.join(unigram_sentence))
+#     print (u'')
 
 bigram_model_filepath = os.path.join(intermediate_directory, 'bigram_model_all')
 bigram_model = Phrases(unigram_sentences)
@@ -185,12 +190,12 @@ bigram_model = Phrases.load(bigram_model_filepath)
 bigram_sentences_filepath = os.path.join(intermediate_directory,
                                          'bigram_sentences_all.txt')
 
-# print("bigrams done")
+print("bigrams done")
 
 # this also takes a while - make the if statement True to execute.
 #ADD: TQDM when time permits
 
-if 1 == 1:
+if 0 == 1:
     with codecs.open(bigram_sentences_filepath, 'w', encoding='utf_8') as f:
         for unigram_sentence in unigram_sentences:
             bigram_sentence = u' '.join(bigram_model[unigram_sentence])
@@ -207,7 +212,7 @@ trigram_model_filepath = os.path.join(intermediate_directory, 'trigram_model_all
 
 # ... and also time consuming - make the if statement True
 # if you want to execute modeling yourself.
-if 1 == 1:
+if 0 == 1:
     trigram_model = Phrases(bigram_sentences)
     trigram_model.save(trigram_model_filepath)
     
@@ -220,7 +225,7 @@ trigram_sentences_filepath = os.path.join(intermediate_directory,
 
 # this is a bit time consuming - make the if statement True
 # if you want to execute data prep yourself.
-if 1 == 1:
+if 0 == 1:
     with codecs.open(trigram_sentences_filepath, 'w', encoding='utf_8') as f:
         for bigram_sentence in bigram_sentences:
             trigram_sentence = u' '.join(trigram_model[bigram_sentence])
@@ -228,14 +233,14 @@ if 1 == 1:
 
 trigram_sentences = LineSentence(trigram_sentences_filepath)
 
-for trigram_sentence in it.islice(trigram_sentences, 230, 240):
-    print (u' '.join(trigram_sentence))
-    print (u'')
+# for trigram_sentence in it.islice(trigram_sentences, 230, 240):
+#     print (u' '.join(trigram_sentence))
+#     print (u'')
 
 trigram_reviews_filepath = os.path.join(intermediate_directory, 'trigram_transformed_reviews_all.txt')
 
 
-if 1 == 1:
+if 0 == 1:
     with codecs.open(trigram_reviews_filepath, 'w', encoding='utf_8') as f:
         for parsed_review in nlp.pipe(line_review(event_txt_filepath),
                                       batch_size=10000, n_threads=4):
@@ -252,24 +257,82 @@ if 1 == 1:
             trigram_review = u' '.join(trigram_review)
             f.write(trigram_review + '\n')
  
-print (u'Original:' + u'\n')
+# print (u'Original:' + u'\n')
 
-for review in it.islice(line_review(review_txt_filepath), 11, 12):
+for review in it.islice(line_review(event_txt_filepath), 11, 12):
     print (review)
 
-print (u'----' + u'\n')
-print (u'Transformed:' + u'\n')
+# print (u'----' + u'\n')
+# print (u'Transformed:' + u'\n')
 
 with codecs.open(event_txt_filepath, encoding='utf_8') as f:
     for review in it.islice(f, 11, 12):
         print (review)
 
+trigram_dictionary_filepath = os.path.join(intermediate_directory,
+                                           'trigram_dict_all.dict')
 
-    print("done")
+print("done")
+
+if 0 == 1:
+
+    trigram_reviews = LineSentence(trigram_reviews_filepath)
+
+    # learn the dictionary by iterating over all of the reviews
+    trigram_dictionary = Dictionary(trigram_reviews)
+    
+    # filter tokens that are very rare or too common from
+    # the dictionary (filter_extremes) and reassign integer ids (compactify)
+    trigram_dictionary.filter_extremes(no_below=10, no_above=0.4)
+    trigram_dictionary.compactify()
+
+    trigram_dictionary.save(trigram_dictionary_filepath)
+    
+# load the finished dictionary from disk
+trigram_dictionary = Dictionary.load(trigram_dictionary_filepath)
+
+trigram_bow_filepath = os.path.join(intermediate_directory,
+                                    'trigram_bow_corpus_all.mm')
+
+
+def trigram_bow_generator(filepath):
+    """
+    generator function to read reviews from a file
+    and yield a bag-of-words representation
+    """
+    
+    for review in LineSentence(filepath):
+        yield trigram_dictionary.doc2bow(review)
+
+if 1 == 1:
+    # generate bag-of-words representations for
+    # all reviews and save them as a matrix
+    MmCorpus.serialize(trigram_bow_filepath,
+                       trigram_bow_generator(trigram_reviews_filepath))
+    
+# load the finished bag-of-words corpus from disk
+trigram_bow_corpus = MmCorpus(trigram_bow_filepath)
+
+lda_model_filepath = os.path.join(intermediate_directory, 'lda_model_all')
 
 
 
+if 1 == 1:
 
+    with warnings.catch_warnings():
+        warnings.simplefilter('ignore')
+        
+        # workers => sets the parallelism, and should be
+        # set to your number of physical cores minus one
+        lda = LdaMulticore(trigram_bow_corpus,
+                           num_topics=50,
+                           id2word=trigram_dictionary,
+                           workers=3)
+    
+    lda.save(lda_model_filepath)
+    
+# load the finished LDA model from disk
+lda = LdaMulticore.load(lda_model_filepath)
 
 
 
