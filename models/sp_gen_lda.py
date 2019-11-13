@@ -55,6 +55,10 @@ with open('../data/add_num_stops.txt', 'r') as f:
     add_numerical_stops = set(s)
     spacy_stopwords |= add_numerical_stops
 
+with open('../data/more_stop_words.txt', 'r') as f:
+    customize_stop_words = s = [i for i in f]
+    more_stop_words = set(s) 
+    spacy_stopwords |= more_stop_words
 
 
 # if verbose=True:
