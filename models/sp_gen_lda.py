@@ -17,6 +17,7 @@ import spacy
 from spacy.lang.en import English
 from spacy.lang.en.stop_words import STOP_WORDS
 
+
 import pyLDAvis
 import pyLDAvis.gensim
 from gensim.models import Phrases
@@ -25,9 +26,7 @@ from gensim import corpora
 from gensim.corpora import Dictionary, MmCorpus
 from gensim.models.ldamulticore import LdaMulticore
 
-
 data_directory = os.path.join('../data', 'mungedASAM.json')  
-
 
 events = [i for i in range(7843)]
 event_ids = set(events)
@@ -46,12 +45,32 @@ event_txt_filepath = os.path.join(intermediate_directory,
                                    'all_descriptions.txt')
 
 print("Updating stopwords")
-with open('../data/add_num_stops.txt', 'r') as f:
-    s = [i for i in f]
-    add_numerical_stops = set(s)
 
 nlp = spacy.load("en")
-nlp.Defaults.stop_words |= add_numerical_stops
+
+spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
+
+with open('../data/add_num_stops.txt', 'r') as f:
+    customize_stop_words = s = [i for i in f]
+    add_numerical_stops = set(s)
+    spacy_stopwords |= add_numerical_stops
+
+
+
+# if verbose=True:
+#     print('Number of stop words: %d' % len(spacy_stopwords))
+#     print('First ten stop words: %s' % list(spacy_stopwords)[:1000])
+
+
+
+#     spacy_nlp.vocab[w].is_stop = Truedoc = spacy_nlp(article)
+# tokens = [token.text for token in doc if not token.is_stop]
+
+# for stopword in my_stop_words:
+#     lexeme = nlp.vocab[stopword]
+#     lexeme.is_stop = True
+
+
 
 
 count = 0
@@ -129,7 +148,6 @@ df.loc[:, 'stop?':'out of vocab.?'] = (df.loc[:, 'stop?':'out of vocab.?']
 
 
 # helper functions
-
 def punct_space(token):
     """
     helper function to eliminate tokens
@@ -212,7 +230,7 @@ trigram_model_filepath = os.path.join(intermediate_directory, 'trigram_model_all
 
 # ... and also time consuming - make the if statement True
 # if you want to execute modeling yourself.
-if 0 == 1:
+if 1 == 1:
     trigram_model = Phrases(bigram_sentences)
     trigram_model.save(trigram_model_filepath)
     
@@ -240,7 +258,7 @@ trigram_sentences = LineSentence(trigram_sentences_filepath)
 trigram_reviews_filepath = os.path.join(intermediate_directory, 'trigram_transformed_reviews_all.txt')
 
 
-if 0 == 1:
+if 1 == 1:
     with codecs.open(trigram_reviews_filepath, 'w', encoding='utf_8') as f:
         for parsed_review in nlp.pipe(line_review(event_txt_filepath),
                                       batch_size=10000, n_threads=4):
@@ -252,6 +270,10 @@ if 0 == 1:
             # apply the first-order and second-order phrase models
             bigram_review = bigram_model[unigram_review]
             trigram_review = trigram_model[bigram_review]
+
+            # remove any remaining stopwords
+            trigram_review = [term for term in trigram_review
+                              if term not in spacy_stopwords]
             
             # write the transformed review as a line in the new file
             trigram_review = u' '.join(trigram_review)
@@ -274,7 +296,7 @@ trigram_dictionary_filepath = os.path.join(intermediate_directory,
 
 print("done")
 
-if 0 == 1:
+if 1 == 1:
 
     trigram_reviews = LineSentence(trigram_reviews_filepath)
 
@@ -325,7 +347,7 @@ if 1 == 1:
         # workers => sets the parallelism, and should be
         # set to your number of physical cores minus one
         lda = LdaMulticore(trigram_bow_corpus,
-                           num_topics=50,
+                           num_topics=6,
                            id2word=trigram_dictionary,
                            workers=3)
     
@@ -334,22 +356,20 @@ if 1 == 1:
 # load the finished LDA model from disk
 lda = LdaMulticore.load(lda_model_filepath)
 
+def explore_topic(topic_number, topn=6):
+    """
+    accept a user-supplied topic number and
+    print out a formatted list of the top terms
+    """
+        
+    print (u'{:20} {}'.format(u'term', u'frequency') + u'\n')
 
+    for term, frequency in lda.show_topic(topic_number, topn=25):
+        print (u'{:20} {:.3f}'.format(term, round(frequency, 3)))
 
+explore_topic(topic_number=0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("done")
 
 
 
