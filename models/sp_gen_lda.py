@@ -50,32 +50,16 @@ nlp = spacy.load("en")
 
 spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
 
+with open('../data/more_stop_words.txt', 'r') as f:
+    customize_stop_words = set([i.strip() for i in f])
+    spacy_stopwords |= customize_stop_words
+
 with open('../data/add_num_stops.txt', 'r') as f:
-    customize_stop_words = s = [i for i in f]
-    add_numerical_stops = set(s)
+    customize_stop_nums = [i for i in f]
+    add_numerical_stops = set(customize_stop_nums)
     spacy_stopwords |= add_numerical_stops
 
-with open('../data/more_stop_words.txt', 'r') as f:
-    customize_stop_words = s = [i for i in f]
-    more_stop_words = set(s) 
-    spacy_stopwords |= more_stop_words
-
-
-# if verbose=True:
-#     print('Number of stop words: %d' % len(spacy_stopwords))
-#     print('First ten stop words: %s' % list(spacy_stopwords)[:1000])
-
-
-
-#     spacy_nlp.vocab[w].is_stop = Truedoc = spacy_nlp(article)
-# tokens = [token.text for token in doc if not token.is_stop]
-
-# for stopword in my_stop_words:
-#     lexeme = nlp.vocab[stopword]
-#     lexeme.is_stop = True
-
-
-
+print(spacy_stopwords, type(spacy_stopwords))
 
 count = 0
 
@@ -91,14 +75,12 @@ with codecs.open(event_txt_filepath, encoding='utf_8') as event_txt_file:
     for event_count, line in enumerate(event_txt_file):
         pass
 
-
 with codecs.open(event_txt_filepath, encoding='utf_8') as f:
     sample_review = list(it.islice(f, 8, 9))[0]
     sample_review = sample_review.replace('\\n', '\n')
         
 #print (f"Showing sample {sample_review}")
 
-#%%time
 parsed_review = nlp(sample_review)
 
 #print("Parsing sentences")
@@ -118,7 +100,6 @@ token_pos = [token.pos_ for token in parsed_review]
 
 pd.DataFrame(zip(token_text, token_pos),
              columns=['token_text', 'part_of_speech'])
-
 
 # Lemmatization
 token_lemma = [token.lemma_ for token in parsed_review]
@@ -188,7 +169,6 @@ unigram_sentences_filepath = os.path.join(intermediate_directory,
                                           'unigram_sentences_all.txt')
 
 
-
 # this takes a while - make the if statement True to execute.
 # ADD: TQDM when time permits
 
@@ -201,9 +181,6 @@ if 0 == 1:
 
 unigram_sentences = LineSentence(unigram_sentences_filepath)
 
-# for unigram_sentence in it.islice(unigram_sentences, 230, 240):
-#     print (u' '.join(unigram_sentence))
-#     print (u'')
 
 bigram_model_filepath = os.path.join(intermediate_directory, 'bigram_model_all')
 bigram_model = Phrases(unigram_sentences)
@@ -214,8 +191,7 @@ bigram_sentences_filepath = os.path.join(intermediate_directory,
 
 print("bigrams done")
 
-# this also takes a while - make the if statement True to execute.
-#ADD: TQDM when time permits
+
 
 if 0 == 1:
     with codecs.open(bigram_sentences_filepath, 'w', encoding='utf_8') as f:
@@ -228,13 +204,13 @@ bigram_sentences = LineSentence(bigram_sentences_filepath)
 #Print these if you want to:
 for bigram_sentence in it.islice(bigram_sentences, 230, 240):
     print (u' '.join(bigram_sentence))
-    print (u'')
+    print (u''
 
 trigram_model_filepath = os.path.join(intermediate_directory, 'trigram_model_all')
 
 # ... and also time consuming - make the if statement True
 # if you want to execute modeling yourself.
-if 1 == 1:
+if 0 == 1:
     trigram_model = Phrases(bigram_sentences)
     trigram_model.save(trigram_model_filepath)
     
@@ -262,7 +238,7 @@ trigram_sentences = LineSentence(trigram_sentences_filepath)
 trigram_reviews_filepath = os.path.join(intermediate_directory, 'trigram_transformed_reviews_all.txt')
 
 
-if 1 == 1:
+if 0 == 1:
     with codecs.open(trigram_reviews_filepath, 'w', encoding='utf_8') as f:
         for parsed_review in nlp.pipe(line_review(event_txt_filepath),
                                       batch_size=10000, n_threads=4):
@@ -300,7 +276,7 @@ trigram_dictionary_filepath = os.path.join(intermediate_directory,
 
 print("done")
 
-if 1 == 1:
+if 0 == 1:
 
     trigram_reviews = LineSentence(trigram_reviews_filepath)
 
@@ -330,7 +306,7 @@ def trigram_bow_generator(filepath):
     for review in LineSentence(filepath):
         yield trigram_dictionary.doc2bow(review)
 
-if 1 == 1:
+if 0 == 1:
     # generate bag-of-words representations for
     # all reviews and save them as a matrix
     MmCorpus.serialize(trigram_bow_filepath,
@@ -343,7 +319,7 @@ lda_model_filepath = os.path.join(intermediate_directory, 'lda_model_all')
 
 
 
-if 1 == 1:
+if 0 == 1:
 
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -365,13 +341,11 @@ def explore_topic(topic_number, topn=6):
     accept a user-supplied topic number and
     print out a formatted list of the top terms
     """
-        
-    print (u'{:20} {}'.format(u'term', u'frequency') + u'\n')
-
+    
     for term, frequency in lda.show_topic(topic_number, topn=25):
-        print (u'{:20} {:.3f}'.format(term, round(frequency, 3)))
+        print (f"{term:20} : {frequency:.3f}")
 
-explore_topic(topic_number=0)
+explore_topic(topic_number=3)
 
 print("done")
 

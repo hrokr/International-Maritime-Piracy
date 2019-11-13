@@ -11,9 +11,7 @@ from gensim import corpora
 import gensim
 import pyLDAvis.gensim
 
-
 print("Updating stopwords")
-
 
 with open('../data/add_num_stops.txt', 'r') as f:
     s = [i for i in f]
