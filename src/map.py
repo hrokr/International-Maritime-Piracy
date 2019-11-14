@@ -16,7 +16,7 @@ app.title = 'Maritime Piracy'
 
 #putting the map on hold
 fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="date",
-                        color_discrete_sequence=["fuchsia"],zoom=1.42, height=900)
+                        color_discrete_sequence=["orange"],zoom=1.42, height=900)
 fig.update_layout(
     mapbox_style="white-bg",
     mapbox_layers=[
@@ -48,20 +48,20 @@ fig.show()
 
 
 
-# app.layout = html.Div([
-#     dcc.RangeSlider(
-#         id='my-range-slider',
-#         min=0,
-#         max=20,
-#         step=0.5,
-#         value=[5, 15]
-#     ),
-#     html.Div(id='output-container-range-slider'),
+app.layout = html.Div([
+    dcc.RangeSlider(
+        id='my-range-slider',
+        min=0,
+        max=20,
+        step=0.5,
+        value=[5, 15]
+    ),
+    html.Div(id='output-container-range-slider'),
 
-#     html.H4(children='Internation Maritime Priacy'),
-#     generate_table(df)
+    html.H4(children='Internation Maritime Priacy'),
+    generate_table(df)
 
-# ])
+])
 
 
 
