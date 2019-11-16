@@ -36,8 +36,15 @@ You can see the difference is between one and five years but even at later years
 So, from all this I've settled on a set of goals centered around relabeling the data based on the content from the event descriptions. To make this happen,I wanted to look at both K-means and Latent Dirichlet Allocation (LDA). My hypothesis is that LDA would preform a bit better due to a set of underlying (aka, latent) features that weren't obvious.
 
 ## K-means as a baseline
-For those not aware, K-mean is an unsupervised method of looking for hard clusters of words in text. Hard clustering meaning that a word can be one and only cluster of words. From there you look for overlap in clusters with displays best with color. Here is an example of what that looks like:
+For those not aware, K-means is an unsupervised method of looking for hard clusters of words in text. Hard clustering meaning that a word can be one and only cluster of words. From there you look for overlap in clusters with displays best with color. Here is an example of what that looks like:
 
 ![K-means example 1](images/K-means_example_1.png "K means example 1")
 
-Not too bad, right? Especially that red and very tight group number three. 
+Not too bad, right? Especially that red and very tight group number three. And the language sort of matches that with the most of the key words being sort past tense. 
+
+
+
+But one has a lot of things phrased in the imperative
+
+
+
