@@ -1,9 +1,9 @@
 
-# <p style="text-align: center;">International Maritime Piracy and Robbery at  Sea
+# <p style="text-align: center;">International Maritime Piracy and Robbery at Sea </p>
 ## <p style="text-align: center;">Alex Rook </p>
-</p>
 
-## <p style="text-align: center;"> 
+
+
 
 Below is map plotting all of the reported international piracy and robbery at sea events since 1979.
 
