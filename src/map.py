@@ -28,22 +28,20 @@ fig.update_layout(
             ]
         }
       ])
-#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
 
 
+def generate_table(dataframe, max_rows=5):
+    return html.Table(
+        # Header
+        [html.Tr([html.Th(col) for col in dataframe.columns])] +
 
-
-# def generate_table(dataframe, max_rows=5):
-#     return html.Table(
-#         # Header
-#         [html.Tr([html.Th(col) for col in dataframe.columns])] +
-
-#         # Body
-#         [html.Tr([
-#             html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
-#         ]) for i in range(min(len(dataframe), max_rows))]
-#     )
+        # Body
+        [html.Tr([
+            html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+        ]) for i in range(min(len(dataframe), max_rows))]
+    )
 
 
 
@@ -62,11 +60,6 @@ app.layout = html.Div([
     generate_table(df)
 
 ])
-
-
-
-  
-
 
 
 
