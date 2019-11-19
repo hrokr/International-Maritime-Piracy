@@ -62,7 +62,6 @@ app.layout = html.Div([
 ])
 
 
-
 # to here
 
 # callback for the range slider
@@ -75,24 +74,17 @@ def update_output(value):
 # callback for the range slider
 
 
+Range slider with marks
 
-
-
-
-# Range slider with marks
-
-# dcc.RangeSlider(
-#     marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
-#     min=-5,
-#     max=6,
-#     value=[-3, 4]
-# ) 
+dcc.RangeSlider(
+    marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
+    min=-5,
+    max=6,
+    value=[-3, 4]
+) 
 
 
 # Range slider w/o marks
-
-
-
 
 
 if __name__ == '__main__':
