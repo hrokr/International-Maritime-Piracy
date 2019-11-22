@@ -28,20 +28,22 @@ fig.update_layout(
             ]
         }
       ])
-fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
 
 
-def generate_table(dataframe, max_rows=5):
-    return html.Table(
-        # Header
-        [html.Tr([html.Th(col) for col in dataframe.columns])] +
 
-        # Body
-        [html.Tr([
-            html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
-        ]) for i in range(min(len(dataframe), max_rows))]
-    )
+
+# def generate_table(dataframe, max_rows=5):
+#     return html.Table(
+#         # Header
+#         [html.Tr([html.Th(col) for col in dataframe.columns])] +
+
+#         # Body
+#         [html.Tr([
+#             html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+#         ]) for i in range(min(len(dataframe), max_rows))]
+#     )
 
 
 
@@ -62,6 +64,12 @@ app.layout = html.Div([
 ])
 
 
+
+  
+
+
+
+
 # to here
 
 # callback for the range slider
@@ -74,17 +82,24 @@ def update_output(value):
 # callback for the range slider
 
 
-Range slider with marks
 
-dcc.RangeSlider(
-    marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
-    min=-5,
-    max=6,
-    value=[-3, 4]
-) 
+
+
+
+# Range slider with marks
+
+# dcc.RangeSlider(
+#     marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
+#     min=-5,
+#     max=6,
+#     value=[-3, 4]
+# ) 
 
 
 # Range slider w/o marks
+
+
+
 
 
 if __name__ == '__main__':
