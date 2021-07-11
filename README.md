@@ -18,7 +18,7 @@ After spending a bit of time with the data I noticed few things that I thought w
 * There was a whopping 1224 different _types_ of victims. Broadly, these could be categorized as:
     - Definite misentries (Thieves, pirates, SUPICIOUS [sic] APPROACH) 
     - Vague misentries (KIDNAPPED, MEN)
-    - Improbable misentries (warship,PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE)
+    - Improbable misentries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE, which *was* was known victim)
     - What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel)
     - Specific vessel names
 
