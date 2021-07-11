@@ -33,7 +33,7 @@ After spending a bit of time with the data I noticed few things that I thought w
 You can see the difference is between one and five years but even at later years, it can be several months.
 
 # Goals
-So, from all this I've settled on a set of goals centered around relabeling the data based on the content from the event descriptions. To make this happen,I wanted to look at both K-means and Latent Dirichlet Allocation (LDA). My hypothesis is that LDA would preform a bit better due to a set of underlying (aka, latent) features that weren't obvious.
+So, from all this I've settled on a set of goals centered around relabeling the data based on the content from the event descriptions. To make this happen, I wanted to look at both K-means and Latent Dirichlet Allocation (LDA). My hypothesis is that LDA would preform a bit better due to a set of underlying (aka, latent) features that weren't obvious.
 
 ## K-means as a baseline
 For those not aware, K-means is an unsupervised method of looking for hard clusters of words in text. Hard clustering meaning that a word can be one and only cluster of words. For my first run I wanted to see what between three and ten clusters would look like. Most of the loadings were low (.009 to .02) and yielded words that were mostly general and past tense. One however had relatively high loadings. A quick check showed it had a lot of things phrased in the imperative. I have a bit of domain knowledge here and was like "I know this type of speech; I don't even need to look at the coordinates. It's from either the Horn of Africa (aka the HOA) or the Caribbean." It was the Horn of Africa. 
