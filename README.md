@@ -1,7 +1,5 @@
 
 # <p style="text-align: center;">International Maritime Piracy and Robbery at Sea </p>
-## <p style="text-align: center;">Alex Rook </p>
-
 
 
 
