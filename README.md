@@ -1,52 +1,57 @@
-
+https://www.un.org/Depts/los/piracy/piracy.htmwww.icc-ccs.org
 # <p style="text-align: center;">International Maritime Piracy and Robbery at Sea </p>
 
+Below is map plotting all of the reported international piracy and robbery at sea incidents since 1979.
 
+![reported piracy and robbery at sea incidents](images/all_events.png "All international piracy and robbery at sea events since 1979")
 
-Below is map plotting all of the reported international piracy and robbery at sea events since 1979.
+The data comes from the National Geospatial Intelligence Anti-Shipping Message ([NGA ASAM](https://msi.nga.mil/Piracy)) database. The reports are aggregated from a number of sources (news sources, police reports, insurance companies, etc). The database includes:
+- Robbery at sea (activities within a country's territorial waters) e.g., Lake Chad
+- Maritime Piracy (Activities in international waters)
+- Actions that hinder shipping in general. e.g., protestors, military actions, etc
 
-![Confirmed ET Sightings](images/all_events.png "All international piracy and robbery at sea events since 1979")
+That last point is important and what makes this database different from the [International Maritime Organization](https://gisis.imo.org/Public/) which also has a database but no API at the point. Overall the NGA ASAM database looks like this.
 
-The data comes from the National Geospatial Intelligence (NGA) and was recently released as a .csv file. I like to sail and traveling by boat has always been an interest so this was an appealing dataset to me. In general it looks like this:
+![raw data](images/imported_raw_data.png "pandas dataframe of NGA ASAM database")
 
-![Confirmed ET Sightings](images/imported_raw_data.png "pandas df of raw piracy data")
+<br>
+
+## NGA ASAM is good but ...
 
 After spending a bit of time with the data I noticed few things that I thought were interesting but were things hinder analysis. For example:
 
-* There was a whopping 1224 different _types_ of victims. Broadly, these could be categorized as:
-    - Definite misentries (Thieves, pirates, SUPICIOUS [sic] APPROACH) 
-    - Vague misentries (KIDNAPPED, MEN)
-    - Improbable misentries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE, which *was* was known victim)
-    - What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel)
-    - Specific vessel names
 
-* There were 327 different types of hostilities, mostly misspellings or inconsistent capitalization entries but a few gems such as:
-    - Ethopia, Iran, IRANIAN NAVAL FORCES, HAITIAN AUTHORITIES, CUBAN GUNBOAT and CHINA.  
-    - STOWAWAYS, Tuna boat
-
-* The reference numbers (year-event number) were substantially inaccurate
+* The reference numbers (year-event number) are substantially inaccurate. For example, you can see reference numbers don't match years.
 
 ![Reference-Date Discrepancies](images/reference-date_discrepencies.png "Reference-Date Discrepancies")
 
-You can see the difference is between one and five years but even at later years, it can be several months.
 
-# Goals
-So, from all this I've settled on a set of goals centered around relabeling the data based on the content from the event descriptions. To make this happen, I wanted to look at both K-means and Latent Dirichlet Allocation (LDA). My hypothesis is that LDA would preform a bit better due to a set of underlying (aka, latent) features that weren't obvious.
+* At last count there are a whopping 1224 different _types_ of victims; broadly categorized as:
+    - Definite misentries (Thieves, pirates, SUPICIOUS [sic] APPROACH) 
+    - Vague entries (KIDNAPPED, MEN)
+    - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE, which actually *was* attacked)
+    - What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel)
+    - Specific vessel names
 
-## K-means as a baseline
-For those not aware, K-means is an unsupervised method of looking for hard clusters of words in text. Hard clustering meaning that a word can be one and only cluster of words. For my first run I wanted to see what between three and ten clusters would look like. Most of the loadings were low (.009 to .02) and yielded words that were mostly general and past tense. One however had relatively high loadings. A quick check showed it had a lot of things phrased in the imperative. I have a bit of domain knowledge here and was like "I know this type of speech; I don't even need to look at the coordinates. It's from either the Horn of Africa (aka the HOA) or the Caribbean." It was the Horn of Africa. 
+<br>
 
-From there you look for overlap in clusters with displays best with color. Here is an example of what that looks like:
+* There were 327 different types of hostilities, mostly misspellings or inconsistent capitalization entries but a few gems such as:
+    - Ethiopia, Tunisia, Iran, IRANIAN NAVAL FORCES, VIETNAMESE PATROL BOATS, HAITIAN AUTHORITIES, CUBAN GUNBOAT and CHINA. I think it's safe to say when a boat is the controlled waters of a particular country and naval vessel of that country has members board a vessel, it's an official action. They might be corrupt but they are authorized by the government to be there.
+    - STOWAWAYS, Tuna boat, Attackers, HAPPY LADY 
 
-![K-means example 1](images/K-means_example_1.png "K means example 1")
+This is odd because everyone uses the definitions of [piracy as defined by the United Nations Convention on the Law of the Sea (UNCLOS)](https://www.un.org/Depts/los/piracy/piracy.htm) including NGA and the Office of Naval Intelligence (ONI) but it isn't reflected in the categories of the database. My sense is this is a low priority issue and that the database was established before UNCLOS.
 
-That red and very tight group number three is the language from the HOA but it's the same if you increase or decrease the number.
+<br>
 
-But either way, that really doesn't really say much. Who cares if all the reports in one area came through the same group? But what if you increase the clusters to a really high number? Like what happens if you go to 30, 50, or even a 100 groups?
 
-Well it runs out you again get clusters, only this time you end with words like Port, Haiti, Prince and au -- in other words the capital of Haiti, Port au Prince. Again, so what? We already have an accurate set of lat/longs for each entry.
+# So, let's make it better
 
-## LDA ftw, right? Right?
+For now, I have two goals. First, clean up the dataset and post it to Kaggle so others can get some benefit. Then let's run some analysis. At a minimum this involves:
+   * Standardizing the categories. Rather than invent my own, I'm going to go with the experts but also add in categories for military action and protestors. 
+   * Cleaning up the formatting, particularly in the description field
+
+
+
 
 
 
