@@ -3,7 +3,7 @@ https://www.un.org/Depts/los/piracy/piracy.htmwww.icc-ccs.org
 
 Below is map plotting all of the reported international piracy and robbery at sea incidents since 1979.
 
-![reported piracy and robbery at sea incidents](images/all_events.png "All international piracy and robbery at sea events since 1979")
+![reported piracy and robbery at sea incidents](images/updated_events.png "All international piracy and robbery at sea events since 1979")
 
 The data comes from the National Geospatial Intelligence Anti-Shipping Message ([NGA ASAM](https://msi.nga.mil/Piracy)) database. The reports are aggregated from a number of sources (news sources, police reports, insurance companies, etc). The database includes:
 - Robbery at sea (activities within a country's territorial waters) e.g., Lake Chad
