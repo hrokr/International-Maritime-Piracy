@@ -20,26 +20,18 @@ def splitLatLong(df: str) -> str:
 
 
 def dms2dd(field):
-    degrees, minutes, seconds, direction = re.split('[°\'"]+', field)
-
+    degrees, minutes, seconds, direction = re.split("[°'\"]+", field)
     dd = float(degrees) + float(minutes) / 60 + float(seconds) / (60 * 60)
     if direction in ("S", "W"):
         dd *= -1
+
     return dd
 
+
 def conv_to_dd(df):
-    print("made it the conversion function")
-    
+
     df["latitude"] = df["latitude"].apply(dms2dd)
     df["longitude"] = df["longitude"].apply(dms2dd)
+    print("file cleaned")
 
-    print("three for three, baby!")
     return df
-
-
-# df.isnull().sum().sum()
-
-
-# # And now save it as a new file
-# df.to_csv('../data/step2.csv', sep='|', encoding='utf-8')
-# print("file cleaned")
