@@ -1,3 +1,4 @@
+import difflib
 import pandas as pd
 import re
 
@@ -33,5 +34,13 @@ def conv_to_dd(df):
     df["latitude"] = df["latitude"].apply(dms2dd)
     df["longitude"] = df["longitude"].apply(dms2dd)
     print("file cleaned")
+
+    return df
+
+
+def baseline_processing(df):
+    preprocess(df)
+    df = splitLatLong(df)
+    df = conv_to_dd(df)
 
     return df
