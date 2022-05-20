@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from csv_processor import conv_to_dd, preprocess, splitLatLong
+from csv_processor import baseline_processing
 
 data_directory = os.path.join("../data", "RAW_ASAM.csv")
 df = pd.read_csv(data_directory)
@@ -9,9 +9,7 @@ df = pd.read_csv(data_directory)
 
 if __name__ == "__main__":
 
-    preprocess(df)
-    df = splitLatLong(df)
-    df = conv_to_dd(df)
+    baseline_processing(df)
     print(df)
 
     # mod_stopwords = Stopword_processor()
