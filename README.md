@@ -29,8 +29,7 @@ After spending a bit of time with the data I noticed few things that I thought w
 ![Reference-Date Discrepancies](images/reference-date_discrepencies.png "Reference-Date Discrepancies")
 
 
-* At last count there are a whopping 1224 different _types_ of victims; broadly cat
-* egorized as:
+* At last count there are a whopping 1224 different _types_ of victims; broadly categorized as:
     - Definite misentries (Thieves, pirates, SUPICIOUS [sic] APPROACH) 
     - Vague entries (KIDNAPPED, MEN)
     - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE, which actually *was* attacked)
