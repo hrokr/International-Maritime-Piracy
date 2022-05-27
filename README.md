@@ -29,7 +29,7 @@ After spending a bit of time with the data I noticed few things that I thought w
 ![Reference-Date Discrepancies](images/reference-date_discrepencies.png "Reference-Date Discrepancies")
 
 
-* At last count there are a whopping 1224 different _types_ of victims; broadly categorized as:
+* At last count there are a whopping 1224 different ***types of victims***; broadly categorized as:
     - Definite misentries (Thieves, pirates, SUPICIOUS [sic] APPROACH) 
     - Vague entries (KIDNAPPED, MEN)
     - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but there was the USS COLE, which actually *was* attacked)
@@ -53,9 +53,18 @@ This is odd because everyone uses the definitions of [piracy as defined by the U
 For now, here's the roadmap:
 -  [ ] First, clean up the dataset. This consists of:
     - [x] Remove the excess spaces in the description column.
+    - [ ] Regularize the 'victim' columns values  - easy first pass would be to trust the data ruthlessly pare down the columns
     - [ ] Fix the 'reference' column values
     - [ ] Regularize the 'hostility' columns values - easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors
-    - [ ]  Regularize the 'victim' columns values  - easy first pass would be to trust the data ruthlessly pare down the columns
+      - Attempted Boarding – Close approach or hull-to-hull contact with report that boarding
+paraphernalia were employed or visible in the approaching boat.
+      - Blocking – Hampering safe navigation, docking, or undocking of a vessel as a means of protest.
+      - Boarding – Unauthorized embarkation of a vessel by persons not part of its complement without
+successfully taking control of the vessel.
+      -  Fired Upon – Weapons discharged at or toward a vessel.
+      - Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
+      - Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
+
 - [ ] Contact NGA and see if this would be of benefit or interest to them
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
