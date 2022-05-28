@@ -4,7 +4,7 @@ import pandas as pd
 from csv_processor import baseline_processing
 
 data_directory = os.path.join("../data", "RAW_ASAM.csv")
-df = pd.read_csv(data_directory)
+df = pd.read_csv(data_directory, skipinitialspace = True)
 
 
 if __name__ == "__main__":
