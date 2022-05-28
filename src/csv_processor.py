@@ -1,4 +1,3 @@
-import difflib
 import pandas as pd
 import re
 
@@ -20,7 +19,7 @@ def splitLatLong(df: str) -> str:
     return df
 
 
-def dms2dd(field):
+def dms2dd(field) -> int:
     degrees, minutes, seconds, direction = re.split("[°'\"]+", field)
     dd = float(degrees) + float(minutes) / 60 + float(seconds) / (60 * 60)
     if direction in ("S", "W"):
@@ -30,10 +29,8 @@ def dms2dd(field):
 
 
 def conv_to_dd(df):
-
     df["latitude"] = df["latitude"].apply(dms2dd)
     df["longitude"] = df["longitude"].apply(dms2dd)
-    print("file cleaned")
 
     return df
 
@@ -42,5 +39,6 @@ def baseline_processing(df):
     preprocess(df)
     df = splitLatLong(df)
     df = conv_to_dd(df)
+    print("file cleaned")
 
     return df
