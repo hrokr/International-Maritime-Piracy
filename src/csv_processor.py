@@ -6,6 +6,7 @@ def preprocess(df):
     df.dropna(subset=["description"], inplace=True)
     df.dropna(axis=1, how="all", inplace=True)
     df.fillna("No information", inplace=True)
+    df['date'] = pd.to_datetime(df['date'])
 
     return df
 
@@ -41,4 +42,10 @@ def baseline_processing(df):
     df = conv_to_dd(df)
     print("file cleaned")
 
+    return df
+
+def fix_references(df):
+    df['reference'] = (df['date'].dt.year.astype(str) + '-' + (df.sort_values('date')
+                    .groupby(df['date'].dt.year).cumcount()+1).astype(str))
+    
     return df
