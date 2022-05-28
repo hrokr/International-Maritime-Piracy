@@ -66,7 +66,7 @@ successfully taking control of the vessel.
       - Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
       - Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
 
-- [ ] Contact NGA and see if this would be of benefit or interest to them (*in progress*)
+- [ ] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
 
