@@ -65,7 +65,7 @@ successfully taking control of the vessel.
 While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *might* though. 
 This can be done by hand or by using a ...
  
-- [ ] NLP model to set the hostility and possibly victim columns.
+- [ ] NLP model to set the hostility and possibly victim columns. (***in progress***)
 - [ ] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
 - [ ] Check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
 
