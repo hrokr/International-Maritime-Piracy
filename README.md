@@ -1,9 +1,6 @@
-
-<br>
 <br>
 
-
-# <p style="text-align: center;">International Maritime Piracy and Robbery at Sea </p>
+#  <p align="center">International Maritime Piracy and Robbery at Sea </p>
 
 Below is map plotting all of the reported international piracy and robbery at sea incidents since 1979.
 
@@ -19,8 +16,7 @@ That last point is important and what makes this database different from the [In
 ![raw data](images/imported_raw_data.png "pandas dataframe of NGA ASAM database")
 <br>
 <br>
-# <center>NGA ASAM is good but ...</center>
-
+# NGA ASAM is good but ...
 After spending a bit of time with the data I noticed few things that I thought were interesting but were things hinder analysis. For example:
 
 
@@ -48,7 +44,7 @@ This is odd because everyone uses the definitions of [piracy as defined by the U
 <br>
 
 
-# <center> So, let's make it better </center>
+# So, let's make it better
 
 For now, here's the roadmap:
 -  [ ] First, clean up the dataset. This consists of:
@@ -66,13 +62,14 @@ successfully taking control of the vessel.
       - Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
       - Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
 
+While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *might* though. 
+This can be done by hand or by using a ...
+ 
+- [ ] NLP model to set the hostility and possibly victim columns.
 - [ ] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
+- [ ] Check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
+
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
-
 - [ ] Dash site 
 
-- [ ] NLP model to set the hostility and possibly victim columns.
-
-While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *might* though.
- - [ ] check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
