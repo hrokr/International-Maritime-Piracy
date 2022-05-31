@@ -50,9 +50,9 @@ For now, here's the roadmap:
 -  [ ] First, clean up the dataset. This consists of:
     - [x] Remove the excess spaces in the description column.
     - [x] Fix the 'reference' column values as they are all sorts of messed up.
-    - [ ] Regularize the 'victim' columns values  - easy first pass would be to trust the data ruthlessly pare down the columns
+    - [ ] ~~Regularize the 'victim' columns values  - easy first pass would be to trust the data ruthlessly pare down the columns~~
 
-    - [ ] Regularize the 'hostility' columns values - easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors
+    - [ ] ~~Regularize the 'hostility' columns values - easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors~~
       - Attempted Boarding – Close approach or hull-to-hull contact with report that boarding
 paraphernalia were employed or visible in the approaching boat.
       - Blocking – Hampering safe navigation, docking, or undocking of a vessel as a means of protest.
@@ -66,7 +66,7 @@ While it's a quick start, I really don't think regex is really going to cut it f
 This can be done by hand or by using a ...
  
 - [ ] NLP model to set the hostility and possibly victim columns. (***in progress***)
-- [ ] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
+- [x] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
 - [ ] Check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
 
 - [ ] Post dataset to Kaggle so others can get some benefit.
