@@ -62,10 +62,10 @@ successfully taking control of the vessel.
       - Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
       - Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
 
-While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *might* though. 
-This can be done by hand or by using a ...
+While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *should* and one-shot models have shown good results. 
  
-- [ ] NLP model to set the hostility and possibly victim columns. (***in progress***)
+- [ ] NLP model to set the hostility column. (***in progress***)
+- [ ] NLP model to set the victim column. 
 - [x] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
 - [ ] Check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
 
