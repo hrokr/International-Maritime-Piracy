@@ -51,30 +51,31 @@ For now, here's the roadmap:
 -  [ ] First, clean up the dataset. This consists of:
     - [x] Remove the excess spaces in the description column.
     - [x] Fix the 'reference' column values as they are all sorts of messed up.
-    - [ ] ~~Regularize the 'victim' columns values  - easy first pass would be to trust the data ruthlessly pare down the columns~~
-
-    - [ ] ~~Regularize the 'hostility' columns values - easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors~~
-      - Attempted Boarding – Close approach or hull-to-hull contact with report that boarding
+- [x] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
+    - [ ] Regularize the 'victim' columns values  - ~~easy first pass would be to trust the data ruthlessly pare down the columns~~
+    - [ ] Regularize the 'hostility' columns values - ~~easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors~~
+  
+While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *should* and one-shot models have shown good results. The collection has evolved over time from priracy to now including more threats to shipping. For example one the picture there are few in the Sea of Azov that are solely due to the Russia-Ukraine war. 
+    
+ * Attempted Boarding – Close approach or hull-to-hull contact with report that boarding
 paraphernalia were employed or visible in the approaching boat.
-      - Blocking – Hampering safe navigation, docking, or undocking of a vessel as a means of protest.
-      - Boarding – Unauthorized embarkation of a vessel by persons not part of its complement without
+ * Blocking – Hampering safe navigation, docking, or undocking of a vessel as a means of protest.
+ * Boarding – Unauthorized embarkation of a vessel by persons not part of its complement without
 successfully taking control of the vessel.
-      - Fired Upon – Weapons discharged at or toward a vessel.
-      - Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
-      - Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
-      - Hijacking/Kidnapping Combination – Unauthorized seizure and retention of a vessel by persons not
+ * Fired Upon – Weapons discharged at or toward a vessel.
+ * Hijacking – Unauthorized seizure and retention of a vessel by persons not part of its complement.
+ * Kidnapping – Unauthorized forcible removal of persons belonging to the vessel from it.
+ * Hijacking/Kidnapping Combination – Unauthorized seizure and retention of a vessel by persons not
 part of its complement who forcefully remove crew members from vessel when disembarking.
-      - Robbery – Theft from a vessel or from persons aboard the vessel.
-      - Suspicious Approach
+ * Robbery – Theft from a vessel or from persons aboard the vessel.
+ * Suspicious Approach
 
-While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *should* and one-shot models have shown good results. 
+There is no cateory for "attacked by military forces", nor is there one for killings or stoaways -- all of which have happened. This is where planing for the future is needed and why I've reached out to NGA for clarity.
  
 - [ ] NLP model to set the hostility column. (***in progress***)
 - [ ] NLP model to set the victim column. 
-- [x] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
 - [ ] Check against the [International Chamber of Commerce's Criminal Crime Services dataset](www.icc-ccs.org)
 
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
 - [ ] Dash site 
-
