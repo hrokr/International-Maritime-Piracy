@@ -51,6 +51,7 @@ For now, here's the roadmap:
 -  [ ] First, clean up the dataset. This consists of:
     - [x] Remove the excess spaces in the description column.
     - [x] Fix the 'reference' column values as they are all sorts of messed up.
+    - [x] Add lat/long columns in decimal degrees for ease of poltting
 - [x] Contact NGA and see if this would be of benefit or interest to them (***in progress***)
     - [ ] Regularize the 'victim' columns values  - ~~easy first pass would be to trust the data ruthlessly pare down the columns~~
     - [ ] Regularize the 'hostility' columns values - ~~easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors~~
@@ -79,3 +80,4 @@ There is no cateory for "attacked by military forces", nor is there one for kill
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
 - [ ] Dash site 
+
