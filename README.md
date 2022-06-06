@@ -56,7 +56,7 @@ For now, here's the roadmap:
     - [ ] Regularize the 'victim' columns values  - ~~easy first pass would be to trust the data ruthlessly pare down the columns~~
     - [ ] Regularize the 'hostility' columns values - ~~easy first pass would be to trust the data ruthlessly pare down the columns but also add ones for military action and protestors~~
   
-While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *should* and one-shot models have shown good results. The collection has evolved over time from priracy to now including more threats to shipping. For example one the picture there are few in the Sea of Azov that are solely due to the Russia-Ukraine war. 
+While it's a quick start, I really don't think regex is really going to cut it for categories. I think a good NLP model *should* and one-shot models have shown good results. The collection has evolved over time from priracy to now including more threats to shipping. For example one the picture there are few in the Black Sea that are solely due to the Russia-Ukraine war. 
     
  * Attempted Boarding – Close approach or hull-to-hull contact with report that boarding
 paraphernalia were employed or visible in the approaching boat.
