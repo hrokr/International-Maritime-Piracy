@@ -80,6 +80,6 @@ There is no cateory for "attacked by military forces", nor is there one for kill
 - [ ] Post dataset to Kaggle so others can get some benefit.
 - [ ] Do a bit of analysis to see what trends can be seen. This will also be useful for a Kaggle dataset.
 - [ ] Dash site 
-
+- [ ] Datsette of finished database shared back to NGA in the event they might find it useful.
 
 Update 15 Jun. Recieved email from NGA. It seemed a mix of low priority, non-comittal, and "this is the way it's always been done". Asked for clarification. If this goes nowhere, I'll make changes and provide them but focus on getting it on Kaggle first.
