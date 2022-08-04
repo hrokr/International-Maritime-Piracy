@@ -48,7 +48,7 @@ This is odd because everyone uses the definitions of [piracy as defined by the U
 # So, let's make it better
 
 For now, here's the roadmap:
--  [ ] First, clean up the dataset. This consists of:
+-  [x] First, clean up the dataset. This consists of:
     - [x] Remove the excess spaces in the description column.
     - [x] Fix the 'reference' column values as they are all sorts of messed up.
     - [x] Add lat/long columns in decimal degrees for ease of poltting
@@ -82,4 +82,4 @@ There is no cateory for "attacked by military forces", nor is there one for kill
 - [ ] Dash site 
 - [ ] Datsette of finished database shared back to NGA in the event they might find it useful.
 
-Update 15 Jun. Recieved email from NGA. It seemed a mix of low priority, non-comittal, and "this is the way it's always been done". Asked for clarification. If this goes nowhere, I'll make changes and provide them but focus on getting it on Kaggle first.
+Update 15 Jun. Recieved email from NGA. It seemed a mix of low priority, noncommittal, and "this is the way it's always been done". Asked for clarification. If this goes nowhere, I'll make changes and provide them but focus on getting it on Kaggle first.  An option I'm seriously considering is a two or three part solution. The first would be to keep the dataset as it is. The second (and I think more useful) is to one-shot the hostilities but leave the victims as the vessel type can be tricky. The third depends on either all or part of the dataset being corrected by hand which would all for a dataset that would be suitable for supervised learning projects.
