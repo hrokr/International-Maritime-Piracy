@@ -84,3 +84,5 @@ There is no category for "attacked by military forces", nor is there one for kil
 - [ ] Datsette of finished database shared back to NGA in the event they might find it useful.
 
 Update 15 Jun. Received email from NGA. It seemed a mix of low priority, noncommittal, and "this is the way it's always been done". Asked for clarification. If this goes nowhere, I'll make changes and provide them but focus on getting it on Kaggle first.  An option I'm seriously considering is a two or three part solution. The first would be to keep the dataset as it is. The second (and I think more useful) is to one-shot the hostilities but leave the victims as the vessel type can be tricky. The third depends on either all or part of the dataset being corrected by hand which would all for a dataset that would be suitable for supervised learning projects.
+
+Update 5 Sept. Returning to project after hiatus.
