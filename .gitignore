@@ -1,0 +1,17 @@
+
+.ipynb_checkpoints
+.DS_Store
+__pycache__
+
+
+
+# data
+/data/in_progress
+
+
+# models
+/models/early_models
+
+# notebooks
+/notebooks/Dash test (don't add).ipynb
+/notebooks/lessons_learned.ipynb
