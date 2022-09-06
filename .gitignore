@@ -11,6 +11,7 @@ __pycache__
 
 # models
 /models/early_models
+/models/.DS_Store
 
 # notebooks
 /notebooks/Dash test (don't add).ipynb
