@@ -29,11 +29,11 @@ repos:
         ]
         exclude: ^(venv/|docs/)
 
-  - repo: https://github.com/codespell-project/codespell
-    rev: v1.16.0
-    hooks:
-    -   id: codespell
-        name: codespell
-        description: Checks for common misspellings in text files.
-        entry: codespell  readme.md code.py
-        language: python
+#  - repo: https://github.com/codespell-project/codespell
+#    rev: v1.16.0
+#    hooks:
+#    -   id: codespell
+#        name: codespell
+#        description: Checks for common misspellings in text files.
+#        entry: codespell  readme.md code.py
+#        language: python
