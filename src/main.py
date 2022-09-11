@@ -14,4 +14,4 @@ if __name__ == "__main__":
     print(df)
 
     os.makedirs("../data/in_progress", exist_ok=True)
-    df.to_csv("../data/in_progress/v1_lat_long.csv")
+    df.to_pickle("../data/in_progress/pickled.pkl")
