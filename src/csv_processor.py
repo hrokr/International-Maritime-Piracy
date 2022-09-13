@@ -85,9 +85,9 @@ def fix_references(df):
     return df
 
 
-def export_as_pickel(df):
+def pickle_data(df):
     """
     Exports file as pickel
     """
-    with open("../data/in_progress/tseting.pkl", "wb") as f:
+    with open("../data/in_progress/pickled_data.pkl", "wb") as f:
         pickle.dump(df, f)
