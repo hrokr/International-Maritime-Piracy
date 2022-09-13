@@ -1,5 +1,5 @@
 import re
-
+import pickle
 import pandas as pd
 
 
@@ -36,7 +36,7 @@ def splitLatLong(df):
 
 def dms2dd(field) -> float:
     """
-    Converts position from Degrees, Minutes, Seconds (DMS) to decimal degrees.
+    Converts postition from Degrees, Minutes, Seconds (DMS) to decimal degrees.
     """
 
     degrees, minutes, seconds, direction = re.split("[°'\"]+", field)
@@ -65,6 +65,8 @@ def baseline_processing(df):
     df = conv_to_dd(df)
     print("Preprocessing completed")
 
+    #    df.to_pickel("../data/in_progress/v1_lat_long.csv")
+    #    df = df.to_pickel("../data/in_progress/v1_lat_long.csv")
     return df
 
 
@@ -78,6 +80,14 @@ def fix_references(df):
         + "-"
         + (df.sort_values("date").groupby(df["date"].dt.year).cumcount() + 1).astype(str)
     )
-    print("Reference column fixed")
+    print("Reference column return dffixed")
 
     return df
+
+
+def export_as_pickel(df):
+    """
+    Exports file as pickel
+    """
+    with open("../data/in_progress/tseting.pkl", "wb") as f:
+        pickle.dump(df, f)
