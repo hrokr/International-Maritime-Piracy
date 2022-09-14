@@ -1,5 +1,5 @@
 import re
-import pickle
+
 import pandas as pd
 
 
@@ -65,14 +65,13 @@ def baseline_processing(df):
     df = conv_to_dd(df)
     print("Preprocessing completed")
 
-    #    df.to_pickel("../data/in_progress/v1_lat_long.csv")
-    #    df = df.to_pickel("../data/in_progress/v1_lat_long.csv")
     return df
 
 
 def fix_references(df):
     """
     Fixes inconsistent reference column numbering by ordering events by calendar year.
+    Not included in baseline_processing() -- it conflicts with NGA's cryptic rationale
     """
 
     df["reference"] = (
@@ -85,9 +84,5 @@ def fix_references(df):
     return df
 
 
-def pickle_data(df):
-    """
-    Exports file as pickel
-    """
-    with open("../data/in_progress/pickled_data.pkl", "wb") as f:
-        pickle.dump(df, f)
+def export_as_pickle(df):
+    df.to_pickle("../data/in_progress/pickled_data.pkl")
