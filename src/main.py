@@ -1,7 +1,8 @@
 import os
 
 import pandas as pd
-from csv_processor import baseline_processing, fix_references, pickle_data
+
+from csv_processor import baseline_processing, export_as_pickle, fix_references
 
 data_directory = os.path.join("../data", "RAW_ASAM.csv")
 df = pd.read_csv(data_directory, skipinitialspace=True)
@@ -9,9 +10,9 @@ df = pd.read_csv(data_directory, skipinitialspace=True)
 
 if __name__ == "__main__":
 
-    baseline_processing(df)
-    fix_references(df)
+    df = baseline_processing(df)
+    df = fix_references(df)
     print(df)
 
     os.makedirs("../data/in_progress", exist_ok=True)
-    pickle_data(df)
+    export_as_pickle(df)
