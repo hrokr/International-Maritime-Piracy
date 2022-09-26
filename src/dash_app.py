@@ -4,6 +4,8 @@ from dash import Dash
 import plotly_express as px
 
 df = pd.read_pickle("../data/in_progress/pickled_data.pkl")
+WORLD_MAP = """https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly
+            /MapServer/tile/{z}/{y}/{x}"""
 app = Dash(__name__)
 
 # world map element
@@ -23,10 +25,7 @@ fig.update_layout(
             "below": "traces",
             "sourcetype": "raster",
             "sourceattribution": "United States Geological Survey",
-            "source": [
-                """https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/
-                MapServer/tile/{z}/{y}/{x}"""
-            ],
+            "source": [WORLD_MAP],
         }
     ],
 )
