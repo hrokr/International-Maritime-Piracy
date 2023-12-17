@@ -38,7 +38,7 @@ After spending a bit of time with the data I noticed few things that I thought w
     - STOWAWAYS, Tuna boat, Attackers, HAPPY LADY
     - Poachers?!?!
 
-This is odd because everyone uses the definitions of [piracy as defined by the United Nations Convention on the Law of the Sea (UNCLOS)](https://www.un.org/Depts/los/piracy/piracy.htm) including NGA and the Office of Naval Intelligence (ONI). These definitions are in the annex of every [Worldwide Threat to Shipping](https://www.oni.navy.mil/ONI-Reports/Shipping-Threat-Reports/Worldwide-Threat-to-Shipping/) report published by ONI
+This is odd because everyone uses the definitions of [piracy as defined by the United Nations Convention on the Law of the Sea (UNCLOS)](https://www.un.org/Depts/los/piracy/piracy.htm) including NGA and the Office of Naval Intelligence (ONI). These definitions are in the annex of every [Worldwide Threat to Shipping](https://www.oni.navy.mil/ONI-Reports/Shipping-Threat-Reports/Worldwide-Threat-to-Shipping/) report published by ONI.
 <blockquote>
 
  * Attempted Boarding – Close approach or hull-to-hull contact with report that boarding paraphernalia were employed or visible in the approaching boat.
@@ -52,15 +52,13 @@ This is odd because everyone uses the definitions of [piracy as defined by the U
  * Suspicious Approach – All other unexplained activity in close proximity of an unknown vessel.
 </blockquote>
 
-Much of this isn't clearly reflected in the categories of the database. Additionally, there is the question if the
-
-  My sense is this is a low priority issue and that the database was established before UNCLOS.
-
-Even if we did stick with the original categories, it still wouldn't be sufficient for several reasons:<br>
+Much of this isn't clearly reflected in the categories of the database. Additionally, it's reasonable to wonder what the database now represents. It was originally meant to be piracy and robbery at sea. But it now more generalized and includes a broader range of threats to shipping and travel by sea in general. But, even if we did stick with the original categories, it still wouldn't be sufficient for several reasons:<br>
 * It doesn't allow for multiple entries
-* It doesn't include for murder
+* It doesn't include for range of crimes, including murder
 * It doesn't account for governmental actions (eg. Russian shelling of a port)
 * It doesn't cover things like stowaways which meet the definition of a boarding but lacks intent of piracy.
+
+ My sense is this is a low priority issue for NGA.
 <br>
 <br>
 
@@ -93,5 +91,3 @@ There is no category for "attacked by military forces", nor is there one for kil
 - [ ] Datsette of finished database shared back to NGA in the event they might find it useful.
 
 Update 15 Jun. Received email from NGA. It seemed a mix of low priority, noncommittal, and "this is the way it's always been done". Asked for clarification. If this goes nowhere, I'll make changes and provide them but focus on getting it on Kaggle first.  An option I'm seriously considering is a two or three part solution. The first would be to keep the dataset as it is. The second (and I think more useful) is to one-shot the hostilities but leave the victims as the vessel type can be tricky. The third depends on either all or part of the dataset being corrected by hand which would all for a dataset that would be suitable for supervised learning projects.
-
-Update 5 Sept. Returning to project after hiatus.
