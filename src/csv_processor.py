@@ -5,9 +5,9 @@ import pandas as pd
 
 def preprocess(df):
     """
-    preprocess csv by:
-        Drop columns with no event description (critial issue)
-        Drop columns where all value are NaN (i.e., 'Unnamed: 8')
+    preprocesses csv by:
+        Drop columns with no event description (critical issue)
+        Drop columns where all values are NaN (i.e., 'Unnamed: 8')
         Change NaN values to 'No Information' (critical issue)
         Convert date column to datetime (used for index)
     """
@@ -22,8 +22,8 @@ def preprocess(df):
 
 def splitLatLong(df):
     """
-    Takes a single combined latitude/longitude position, breaks into two
-    columns, and gets rid of the old column.
+    Converts the 'position' column into separate columns ('latitude' and 'longitude')
+    Removes  the 'position' column.
     """
 
     df = df.join(df["position"].str.split(expand=True)).rename(
