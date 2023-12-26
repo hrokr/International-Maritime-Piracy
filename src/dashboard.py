@@ -30,17 +30,27 @@ def create_app():
         step=None,
     )
 
-    navarea_dropdown = dcc.Dropdown(
-        id="navarea-dropdown",
-        options=[{"label": i, "value": i} for i in df["navArea"].unique()],
-        value=df["navArea"].unique().tolist(),
-        multi=True,
-    )
+    # Create a hierarchical dropdown with multi-select and conditional formatting
+    hierarchical_dropdown = dcc.Dropdown(
+        id="hierarchical-dropdown",
+        # options=[
+        #     {
+        #         "label": f"{navArea} ({', '.join(subregs)})" if subregs else navArea,  # Handle empty subregs
+        #         "value": navArea,
+        #     }
+        #     for navArea, subregs in df.groupby("navArea")["subreg"].agg(list).items()
+        # ],
 
-    subregion_dropdown = dcc.Dropdown(
-        id="subregion-dropdown",
-        options=[{"label": i, "value": i} for i in df["subreg"].unique()],
-        value=df["subreg"].unique().tolist(),
+        options=[
+            {
+                "label": f"{navArea} ({', '.join(set(str(subreg) for subreg in subregs))})" if subregs else navArea,  # Use a set for unique subregs
+                "value": navArea,
+            }
+            for navArea, subregs in df.groupby("navArea")["subreg"].agg(list).items()
+        ],
+
+
+        value=df["navArea"].unique().tolist(),  # Initially select all navAreas
         multi=True,
     )
 
@@ -48,12 +58,7 @@ def create_app():
         [
             dbc.Row(dcc.Graph(id="map-graph", style={"height": "70vh"})),
             dbc.Row(year_slider, style={"width": "100%", "margin": "10px"}),
-            dbc.Row(
-                [
-                    dbc.Col(navarea_dropdown),
-                    dbc.Col(subregion_dropdown),
-                ]
-            ),
+            dbc.Row(dbc.Col(hierarchical_dropdown)),  # Single dropdown for both
         ]
     )
 
@@ -61,18 +66,14 @@ def create_app():
         Output("map-graph", "figure"),
         [
             Input("year-slider", "value"),
-            Input("navarea-dropdown", "value"),
-            Input("subregion-dropdown", "value"),
+            Input("hierarchical-dropdown", "value"),
         ],
     )
-    def update_figure(selected_years, selected_navarea, selected_subregion):
+    def update_figure(selected_years, selected_navareas):
         filtered_df = df[
             (df["year"] >= selected_years[0]) & (df["year"] <= selected_years[1])
         ]
-        filtered_df = filtered_df[
-            (filtered_df["navArea"].isin(selected_navarea))
-            | (filtered_df["subreg"].isin(selected_subregion))
-        ]
+        filtered_df = filtered_df[df["navArea"].isin(selected_navareas)]
 
         fig = px.scatter_mapbox(
             data_frame=filtered_df,
@@ -107,3 +108,4 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run_server(debug=True)
+
