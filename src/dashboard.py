@@ -61,10 +61,10 @@ tabs = dcc.Tabs(
     value="all",
     children=[
         dcc.Tab(label="All Areas", value="all"),
-        dcc.Tab(label="I, II, & III", value="123"),
-        dcc.Tab(label="VII & IX", value="79"),
-        dcc.Tab(label="XI", value="11"),
-        dcc.Tab(label="IV", value="4"),
+        dcc.Tab(label="I, II, & III", value="I, II, III"),
+        dcc.Tab(label="VII & IX", value="VII, IX"),
+        dcc.Tab(label="XI", value="XI"),
+        dcc.Tab(label="IV", value="IV"),
     ],
 )
 
@@ -94,32 +94,40 @@ app.layout = html.Div(
 ## Callbacks
 
 # Update the map based on selected tab and year slider
+
+
 @app.callback(
-    Output("map-graph", "figure"),
-    [Input("map-tabs", "value"), Input("year-slider", "value")],
+    [Output("map-graph", "figure"), Output("event-list", "children")],
+    [
+        Input("map-tabs", "value"),
+        Input("year-slider", "value"),
+        Input("map-graph", "clickData"),
+    ],
 )
-def update_map(selected_tab, selected_years):
+def update_content(selected_tab, selected_years, click_data):
     if selected_tab == "all":
         nav_areas = df["navArea"].unique()
     else:
-        nav_areas = [int(area) for area in selected_tab]
-    return create_map_figure(df, nav_areas, year_range=selected_years)
+        nav_areas = selected_tab.split(",")
+    fig = create_map_figure(df, nav_areas, year_range=selected_years)
 
-
-@app.callback(
-    Output("event-list", "children"),
-    [Input("map-graph", "clickData")],
-)
-def display_events(click_data):
     if click_data:
+        filtered_df = df[df["navArea"].isin(nav_areas)]
+        if selected_years:
+            filtered_df = filtered_df[
+                (filtered_df["year"] >= selected_years[0])
+                & (filtered_df["year"] <= selected_years[1])
+            ]
         point_index = click_data["points"][0]["pointIndex"]
-        description = df.iloc[point_index]["description"]
-        return html.Div(
+        description = filtered_df.iloc[point_index]["description"]
+        event_list = html.Div(
             description,
-            style={"overflow-y": "scroll", "height": "60vh"},  # Add scrollbar and height
+            style={"overflow-y": "scroll", "height": "60vh"},
         )
     else:
-        return html.Div(["Click on a point in the map to see its description"])
+        event_list = html.Div(["Click on a point in the map to see its description"])
+
+    return fig, event_list
 
 
 if __name__ == "__main__":
