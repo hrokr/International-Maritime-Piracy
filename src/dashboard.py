@@ -104,6 +104,29 @@ app.layout = html.Div(
         Input("map-graph", "clickData"),
     ],
 )
+# def update_content(selected_tab, selected_years, click_data):
+#     if selected_tab == "all":
+#         nav_areas = df["navArea"].unique()
+#     else:
+#         nav_areas = selected_tab.split(",")
+#     fig = create_map_figure(df, nav_areas, year_range=selected_years)
+
+    # if click_data:
+    #     filtered_df = df[df["navArea"].isin(nav_areas)]
+    #     if selected_years:
+    #         filtered_df = filtered_df[
+    #             (filtered_df["year"] >= selected_years[0])
+    #             & (filtered_df["year"] <= selected_years[1])
+    #         ]
+    #     point_index = click_data["points"][0]["pointIndex"]
+    #     description = filtered_df.iloc[point_index]["description"]
+    #     event_list = html.Div(
+    #         description,
+    #         style={"overflow-y": "scroll", "height": "60vh"},
+    #     )
+    # else:
+    #     event_list = html.Div(["Click on a point in the map to see its description"])
+
 def update_content(selected_tab, selected_years, click_data):
     if selected_tab == "all":
         nav_areas = df["navArea"].unique()
@@ -111,7 +134,7 @@ def update_content(selected_tab, selected_years, click_data):
         nav_areas = selected_tab.split(",")
     fig = create_map_figure(df, nav_areas, year_range=selected_years)
 
-    if click_data:
+    if click_data is not None:
         filtered_df = df[df["navArea"].isin(nav_areas)]
         if selected_years:
             filtered_df = filtered_df[
@@ -119,11 +142,14 @@ def update_content(selected_tab, selected_years, click_data):
                 & (filtered_df["year"] <= selected_years[1])
             ]
         point_index = click_data["points"][0]["pointIndex"]
-        description = filtered_df.iloc[point_index]["description"]
-        event_list = html.Div(
-            description,
-            style={"overflow-y": "scroll", "height": "60vh"},
-        )
+        if point_index < len(filtered_df):
+            description = filtered_df.iloc[point_index]["description"]
+            event_list = html.Div(
+                description,
+                style={"overflow-y": "scroll", "height": "60vh"},
+            )
+        else:
+            event_list = html.Div(["The selected point is out of bounds for the current data"])
     else:
         event_list = html.Div(["Click on a point in the map to see its description"])
 
