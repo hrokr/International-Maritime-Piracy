@@ -1,5 +1,4 @@
 import re
-
 import pandas as pd
 
 
@@ -82,6 +81,7 @@ def fix_references(df):
     print("Reference column return dffixed")
 
     return df
+
 
 
 def export_as_pickle(df):
