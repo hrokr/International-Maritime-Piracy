@@ -11,8 +11,8 @@ df["year"] = df["date"].dt.year
 app = dash.Dash(__name__)
 
 # RangeSlider for main map
-decade_years = list(range(df["year"].min(), df["year"].max() + 1, 10))
-
+#decade_years = list(range(df["year"].min(), df["year"].max() + 1, 10))
+decade_years = list(range(df["year"].min() // 10 * 10, df["year"].max() + 1, 10))
 year_slider = dcc.RangeSlider(
     id="year-slider",
     min=df["year"].min(),
@@ -42,6 +42,7 @@ def create_map_figure(df, nav_areas, year_range=None):
     )
     fig.update_layout(
         mapbox_style="white-bg",
+        margin={"r": 10, "t": 10, "l": 10, "b": 35},
         mapbox_layers=[
             {
                 "below": "traces",
@@ -52,7 +53,7 @@ def create_map_figure(df, nav_areas, year_range=None):
                 ],
             }
         ],
-        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        #margin={"r": 0, "t": 0, "l": 0, "b": 0},
     )
     return fig
 
