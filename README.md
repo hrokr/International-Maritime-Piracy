@@ -17,25 +17,26 @@ That last point is important and what makes this database different from the [In
 <br>
 <br>
 # NGA ASAM is good but ...
-After spending a bit of time with the data I noticed few things that I thought were interesting but were things hinder analysis. For example:
+After spending some time with the data I noticed few things I thought hindered analysis. For example:
 
 
-1. The reference numbers (year-event number) are substantially inaccurate. For example, you can see reference numbers don't match years. They also don't the USG fiscal year -- or any coherent method.
+1. The reference numbers (year-event number) are substantially inaccurate. For example, you can see reference numbers don't match years. They also don't the USG fiscal year -- or any coherent method. This true for both when the data base was started but was true a couple of years ago too.
 
 ![Reference-Date Discrepancies](images/reference-date_discrepencies.png "Reference-Date Discrepancies")
 
 
-2. At last count there are a whopping 1224 different ***types of victims***; broadly categorized as:
+2. At the time of writing there are a whopping 1224 different ***types of victims***; broadly categorized as:
     - Definite misentries (Speedboat, SUPICIOUS APPROACH)
     - Vague entries (VESSEL, ALL SHIPPING, Anchored, At anchor,  KIDNAPPED, MEN)
-    - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but then again there was the USS COLE, which *actually was* attacked)
+    - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but, then again, the USS COLE *actually was* attacked)
     - What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel).
     - Specific vessel names
 <br>
 
-3. There were 327 different types of hostilities, mostly misspellings or inconsistent capitalization entries but a few gems such as:
+3. There were 327 different types of hostilities, much of which was due to misspellings or inconsistent capitalization entries but there were a few gems such as:
     - Ethiopia, Tunisia, Iran, IRANIAN NAVAL FORCES, VIETNAMESE PATROL BOATS, HAITIAN AUTHORITIES, CUBAN GUNBOAT and CHINA. I think it's safe to say when a boat is the controlled waters of a particular country and a naval vessel of that country has boards the vessel, it's an official action.
-    - STOWAWAYS, Tuna boat, Attackers, HAPPY LADY
+    - STOWAWAYS, Tuna boat, Attackers
+    - HAPPY LADY (which was the name of the victim vessel)
     - Poachers?!?!
 
 This is odd because everyone uses the definitions of [piracy as defined by the United Nations Convention on the Law of the Sea (UNCLOS)](https://www.un.org/Depts/los/piracy/piracy.htm) including NGA and the Office of Naval Intelligence (ONI). These definitions are in the annex of every [Worldwide Threat to Shipping](https://www.oni.navy.mil/ONI-Reports/Shipping-Threat-Reports/Worldwide-Threat-to-Shipping/) report published by ONI.
