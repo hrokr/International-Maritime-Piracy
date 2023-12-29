@@ -11,12 +11,14 @@ df["year"] = df["date"].dt.year
 app = dash.Dash(__name__)
 
 # RangeSlider for main map
+decade_years = list(range(df["year"].min(), df["year"].max() + 1, 10))
+
 year_slider = dcc.RangeSlider(
     id="year-slider",
     min=df["year"].min(),
     max=df["year"].max(),
     value=[df["year"].min(), df["year"].max()],
-    marks={str(year): str(year) for year in df["year"].unique()},
+    marks={str(year): str(year) if year in decade_years else '' for year in df["year"].unique()},
     step=None,
 )
 
@@ -60,11 +62,11 @@ tabs = dcc.Tabs(
     id="map-tabs",
     value="all",
     children=[
-        dcc.Tab(label="All Areas", value="all"),
-        dcc.Tab(label="I, II, & III", value="I, II, III"),
-        dcc.Tab(label="VII & IX", value="VII, IX"),
-        dcc.Tab(label="XI", value="XI"),
-        dcc.Tab(label="IV", value="IV"),
+        dcc.Tab(label="World Wide", value="all"),
+        dcc.Tab(label="I, II, III - European Atlantic, Med, W. Africa", value="I, II, III"),
+        dcc.Tab(label="VIII & IX - HOA, Gulf, Indian Ocean", value="VIII, IX"),
+        dcc.Tab(label="XI - SE Asia", value="XI"),
+        dcc.Tab(label="IV - Carribean, W Atlantic", value="IV"),
     ],
 )
 
@@ -73,6 +75,7 @@ app.layout = html.Div(
     style={
         "display": "flex",
         "align-items": "flex-start",
+        "flex-direction": "column",
     },  # Apply flexbox to the main layout
     children=[
         html.Div(
@@ -104,34 +107,15 @@ app.layout = html.Div(
         Input("map-graph", "clickData"),
     ],
 )
-# def update_content(selected_tab, selected_years, click_data):
-#     if selected_tab == "all":
-#         nav_areas = df["navArea"].unique()
-#     else:
-#         nav_areas = selected_tab.split(",")
-#     fig = create_map_figure(df, nav_areas, year_range=selected_years)
-
-    # if click_data:
-    #     filtered_df = df[df["navArea"].isin(nav_areas)]
-    #     if selected_years:
-    #         filtered_df = filtered_df[
-    #             (filtered_df["year"] >= selected_years[0])
-    #             & (filtered_df["year"] <= selected_years[1])
-    #         ]
-    #     point_index = click_data["points"][0]["pointIndex"]
-    #     description = filtered_df.iloc[point_index]["description"]
-    #     event_list = html.Div(
-    #         description,
-    #         style={"overflow-y": "scroll", "height": "60vh"},
-    #     )
-    # else:
-    #     event_list = html.Div(["Click on a point in the map to see its description"])
 
 def update_content(selected_tab, selected_years, click_data):
     if selected_tab == "all":
         nav_areas = df["navArea"].unique()
     else:
-        nav_areas = selected_tab.split(",")
+        #nav_areas = selected_tab.split(",")
+        nav_areas = [area.strip() for area in selected_tab.split(",")]   
+
+
     fig = create_map_figure(df, nav_areas, year_range=selected_years)
 
     if click_data is not None:
