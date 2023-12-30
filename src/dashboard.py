@@ -31,11 +31,17 @@ def create_map_figure(df, nav_areas, year_range=None):
             (filtered_df["year"] >= year_range[0])
             & (filtered_df["year"] <= year_range[1])
         ]
+    
+    center_lat = filtered_df["latitude"].mean()
+    center_lon = filtered_df["longitude"].mean()
+    center = {"lat": center_lat, "lon": center_lon}
+
     fig = px.scatter_mapbox(
         data_frame=filtered_df,
         lat="latitude",
         lon="longitude",
-        center={"lat": 10, "lon": 0},
+        #center={"lat": 10, "lon": 0},
+        center=center,
         color_discrete_sequence=["gold"],
         zoom=1.3,
         height=600,
