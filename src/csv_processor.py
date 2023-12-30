@@ -1,5 +1,4 @@
 import re
-
 import pandas as pd
 
 
@@ -64,22 +63,6 @@ def baseline_processing(df):
     df = splitLatLong(df)
     df = conv_to_dd(df)
     print("Preprocessing completed")
-
-    return df
-
-
-def fix_references(df):
-    """
-    Fixes inconsistent reference column numbering by ordering events by calendar year.
-    Not included in baseline_processing() -- it conflicts with NGA's cryptic rationale
-    """
-
-    df["reference"] = (
-        df["date"].dt.year.astype(str)
-        + "-"
-        + (df.sort_values("date").groupby(df["date"].dt.year).cumcount() + 1).astype(str)
-    )
-    print("Reference column return dffixed")
 
     return df
 
