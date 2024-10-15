@@ -4,10 +4,11 @@
 __pycache__
 
 
-
 # data
 /data/in_progress
 
+# code that probably isn't going to work out
+/purgatory
 
 # models
 /models/early_models
