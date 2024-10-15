@@ -3,11 +3,13 @@
 .DS_Store
 __pycache__
 
-
+.notes/
 
 # data
 /data/in_progress
 
+# code that probably isn't going to work out
+/purgatory
 
 # models
 /models/early_models
