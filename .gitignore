@@ -3,6 +3,11 @@
 .DS_Store
 __pycache__
 
+<<<<<<< Updated upstream
+=======
+#.notes
+.notes
+>>>>>>> Stashed changes
 .notes/
 
 # data
