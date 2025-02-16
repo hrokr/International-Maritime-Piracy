@@ -76,28 +76,28 @@ After spending some time with the data I noticed a few things I thought hindered
 
 2. At the time of writing there are a whopping 1224 different ***types of victims***; broadly categorized as:
 
-- Definite misentries (Speedboat, SUPICIOUS APPROACH)
-- Vague entries (VESSEL, ALL SHIPPING, Anchored, At anchor,  KIDNAPPED, MEN)
-- Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but, then again, the USS COLE *actually was* attacked)
-- What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel).
-- Specific vessel names
-<br>
+    - Definite misentries (Speedboat, SUPICIOUS APPROACH)
+    - Vague entries (VESSEL, ALL SHIPPING, Anchored, At anchor,  KIDNAPPED, MEN)
+    - Improbable entries (warship, PHILIPPINE NAVY, SOUTH KOREAN COAST GUARD -- but, then again, the USS COLE *actually was* attacked)
+    - What appears to be an attempt at standardization (e.g. bulk carrier, fishing vessel).
+    - Specific vessel names
+    <br>
 
 3. There were 327 different types of hostilities, much of which was due to misspellings or inconsistent capitalization entries but there were a few gems such as:
 
-- Ethiopia, Tunisia, Iran, IRANIAN NAVAL FORCES, VIETNAMESE PATROL BOATS, HAITIAN AUTHORITIES, CUBAN GUNBOAT and CHINA. I think it's safe to say when a boat is in the controlled waters of a particular country and a naval vessel of that country has boarded the vessel, it's an official action.
-- STOWAWAYS, Tuna boat, Attackers
-- HAPPY LADY (which was the name of the victim vessel)
-- Poachers?!?!
+    - Ethiopia, Tunisia, Iran, IRANIAN NAVAL FORCES, VIETNAMESE PATROL BOATS, HAITIAN AUTHORITIES, CUBAN GUNBOAT and CHINA. I think it's safe to say when a boat is in the controlled waters of a particular country and a naval vessel of that country has boarded the vessel, it's an official action.
+    - STOWAWAYS, Tuna boat, Attackers
+    - HAPPY LADY (which was the name of the victim vessel)
+    - Poachers?!?!
 
-Much of this isn't reflected in the categories of the database. Additionally, it's reasonable to wonder what the database now represents. It was originally meant to be piracy and robbery at sea. But it is now more generalized and includes a broader range of threats to shipping and travel by sea in general. But, even if we did stick with the original categories, it still wouldn't be sufficient for several reasons:<br>
+    Much of this isn't reflected in the categories of the database. Additionally, it's reasonable to wonder what the database now represents. It was originally meant to be piracy and robbery at sea. But it is now more generalized and includes a broader range of threats to shipping and travel by sea in general. But, even if we did stick with the original categories, it still wouldn't be sufficient for several reasons:<br>
 
 4. Other issues
 
-- It doesn't allow for multiple entries
-- It doesn't include for range of crimes, including murder
-- It doesn't account for governmental actions (eg. Russian shelling of a port)
-- It doesn't cover things like stowaways which meet the definition of a boarding but lacks intent of piracy.
+    - It doesn't allow for multiple entries
+    - It doesn't include for range of crimes, including murder
+    - It doesn't account for governmental actions (eg. Russian shelling of a port)
+    - It doesn't cover things like stowaways which meet the definition of a boarding but lacks intent of piracy.
 
 <br> <br>
 [Top](#table-of-contents)
